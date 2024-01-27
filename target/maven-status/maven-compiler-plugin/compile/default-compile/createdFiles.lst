@@ -1,7 +1,10 @@
+com\example\Facturacion\service\ClienteService.class
 com\example\Facturacion\models\Producto.class
 com\example\Facturacion\models\Factura.class
 com\example\Facturacion\repository\DetalleRepository.class
+com\example\Facturacion\service\ProductoService.class
 com\example\Facturacion\controllers\Controller.class
+com\example\Facturacion\service\DetalleService.class
 com\example\Facturacion\repository\ProductoRepository.class
 com\example\Facturacion\controllers\ClienteController.class
 com\example\Facturacion\repository\FacturaRepository.class
@@ -12,3 +15,4 @@ com\example\Facturacion\controllers\ProductoController.class
 com\example\Facturacion\models\Cliente.class
 com\example\Facturacion\models\Detalle.class
 com\example\Facturacion\controllers\DetalleController.class
+com\example\Facturacion\service\FacturaService.class

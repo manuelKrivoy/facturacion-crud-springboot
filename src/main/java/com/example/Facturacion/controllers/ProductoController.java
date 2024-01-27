@@ -1,6 +1,7 @@
 package com.example.Facturacion.controllers;
 
 import com.example.Facturacion.models.Producto;
+import com.example.Facturacion.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,49 +15,28 @@ import java.util.Optional;
 public class ProductoController {
 
     @Autowired //Inyeccion de dependencias de forma automática
-    private ProductoRepository repoProducto; //traigo el repositorio de mis productos creados
+    private ProductoService productoService;
 
 
     @GetMapping("productos") //en este caso el path es localhost:8080/Productos
     public List<Producto> getProductos(){
-        return repoProducto.findAll();
+        return productoService.getProductos();
     }
 
     @PostMapping("alta/producto") // doy de alta un nuevo producto
     public String post(@RequestBody Producto producto) {
-        repoProducto.save(producto);
-        return "Producto guardado";
+        return productoService.post(producto);
     }
 
     @PutMapping("modificar/producto/{id}")
     public String update(@PathVariable Long id, @RequestBody Producto producto) {
-        Optional<Producto> optionalProducto = repoProducto.findById(id);
-
-        if (optionalProducto.isPresent()) {
-            Producto updateProducto = optionalProducto.get();
-            updateProducto.setName(producto.getName());
-            updateProducto.setDescription(producto.getDescription());
-            updateProducto.setStock(producto.getStock());
-            updateProducto.setPrice(producto.getPrice());
-            repoProducto.save(updateProducto);
-            return "Producto modificado";
-        } else {
-            return "Producto no encontrado";
-        }
+        return productoService.update(id,producto);
     }
 
 
     @DeleteMapping("baja/producto/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id) { //Hice Response Entity para que si no encuentra el id devuelva un 404 con un mensaje personalizado
-        Optional<Producto> optionalProducto = repoProducto.findById(id);
-
-        if (optionalProducto.isPresent()) {
-            Producto deleteProducto = optionalProducto.get();
-            repoProducto.delete(deleteProducto);
-            return ResponseEntity.ok("Producto eliminado");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Producto no encontrado");
-        }
+        return  productoService.delete(id);
     }
 
 
