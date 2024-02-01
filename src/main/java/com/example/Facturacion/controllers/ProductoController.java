@@ -3,13 +3,10 @@ package com.example.Facturacion.controllers;
 import com.example.Facturacion.models.Producto;
 import com.example.Facturacion.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.Facturacion.repository.ProductoRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class ProductoController {

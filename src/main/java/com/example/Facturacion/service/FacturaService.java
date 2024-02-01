@@ -23,6 +23,7 @@ public class FacturaService {
     }
 
     public String post( Factura factura) {
+        factura.setTotal(0); //siempre factura se crea con un valor total = 0
         repoFactura.save(factura);
         return "Factura guardada";
     }

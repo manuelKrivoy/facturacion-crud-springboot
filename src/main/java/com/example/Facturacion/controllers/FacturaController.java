@@ -1,10 +1,8 @@
 package com.example.Facturacion.controllers;
 
 import com.example.Facturacion.models.Factura;
-import com.example.Facturacion.repository.FacturaRepository;
 import com.example.Facturacion.service.FacturaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

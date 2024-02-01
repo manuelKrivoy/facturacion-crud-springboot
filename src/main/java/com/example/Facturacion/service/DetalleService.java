@@ -2,7 +2,11 @@ package com.example.Facturacion.service;
 
 
 import com.example.Facturacion.models.Detalle;
+import com.example.Facturacion.models.Factura;
+import com.example.Facturacion.models.Producto;
 import com.example.Facturacion.repository.DetalleRepository;
+import com.example.Facturacion.repository.FacturaRepository;
+import com.example.Facturacion.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,17 +20,42 @@ import java.util.Optional;
 public class DetalleService {
     @Autowired
     private DetalleRepository repoDetalle;
+    @Autowired
+    private FacturaService facturaService;
+    @Autowired
+    private FacturaRepository repoFactura;
+    @Autowired
+    private ProductoService productoService;
+    @Autowired
+    private ProductoRepository repoProducto;
 
     public List<Detalle> getDetalles(){
         return repoDetalle.findAll();
     }
 
-    public String post( Detalle detalle) {
-        repoDetalle.save(detalle);
-        return "Detalle guardado";
-    }
-
-    @PutMapping("modificar/detalle/{id}")
+    public String post(Detalle detalle) {
+        Optional<Factura> optionalActualizarMontoFactura = repoFactura.findById(detalle.getFactura().getId());
+        Optional<Producto> optionalActualizarStockProducto = repoProducto.findById(detalle.getProducto().getId());
+        if (optionalActualizarMontoFactura.isPresent() && optionalActualizarStockProducto.isPresent()) {
+            Producto productoElegido = optionalActualizarStockProducto.get();
+            if(productoElegido.getStock() > detalle.getAmount()){
+                Factura actualizarMontoFactura = optionalActualizarMontoFactura.get();
+                // Actualizo valor factura
+                actualizarMontoFactura.setTotal(actualizarMontoFactura.getTotal() + detalle.getAmount() * productoElegido.getPrice());
+                repoDetalle.save(detalle);
+                //Actualizo stock producto
+                productoElegido.setStock(productoElegido.getStock()- detalle.getAmount());
+                // Guardar los cambios en las entidades actualizadas
+                repoFactura.save(actualizarMontoFactura);
+                repoProducto.save(productoElegido);
+                return "Detalle guardado";
+            }
+            else{
+                return "No hay suficiente stock disponible";
+            }}
+            else {
+             return "Factura o Producto no encontrados";
+        }}
     public String update(Long id,  Detalle detalle) {
         Optional<Detalle> optionalDetalle = repoDetalle.findById(id);
         if (optionalDetalle.isPresent()) {
