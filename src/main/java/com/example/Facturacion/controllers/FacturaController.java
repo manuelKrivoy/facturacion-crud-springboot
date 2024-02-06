@@ -37,6 +37,10 @@ public class FacturaController {
        return facturaService.delete(id);
     }
 
+    @GetMapping("comprobante/{id}") // Genero comprobante de la factura.
+    public ResponseEntity<?> getComprobante(@PathVariable Long id){ //es de tipo ? porque puede devolver un objeto (caso exitoso) o un string (caso no exitoso)
+        return facturaService.getComprobante(id);
+    }
 
 
 }

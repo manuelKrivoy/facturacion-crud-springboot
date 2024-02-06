@@ -53,4 +53,15 @@ public class FacturaService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Factura no encontrada");
         }
     }
+
+    public ResponseEntity<?> getComprobante(Long id) { //es de tipo ? porque puede devolver un objeto (caso exitoso) o un string (caso no exitoso)
+        Optional<Factura> optionalFactura = repoFactura.findById(id);
+        if (optionalFactura.isPresent()) {
+            return ResponseEntity.ok().body(optionalFactura.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe factura con ID = " +id);
+        }
+    }
+
+
 }
