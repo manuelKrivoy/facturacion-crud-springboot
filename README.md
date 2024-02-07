@@ -1,5 +1,5 @@
 # CRUD Java
-CRUD utilizando Java Spring.
+CRUD utilizando Java Spring con JPA y MySQL.
 
 # DER:
 

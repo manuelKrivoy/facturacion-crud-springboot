@@ -33,7 +33,7 @@ public class Factura {
 
         // Almacenamos la hora obtenida en createdAt
         if (tiempo != null && tiempo.getDateTime() != null) {
-            createdAt = tiempo.getDateTime();
+            createdAt = tiempo.getDateTime(); //Consumo fecha de la API
         } else {
             createdAt = LocalTime.now().toString(); //Si no hay respuesta o es mala almacenamos la hora de otra forma. (LocalDate)
         }
