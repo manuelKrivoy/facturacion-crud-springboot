@@ -7,4 +7,9 @@ CRUD utilizando Java Spring.
 
 
 
+# Scripts DB:
+Se agregó un archivo inserts.sql para agregar datos de prueba, generar un data.sql en Springboot generaba probalemas de repetición de elementos
+
+
+
 

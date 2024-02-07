@@ -11,7 +11,7 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column() //cambio nombre columna
+    @Column(unique = true) // no puede haber productos con la misma descripcion
     private String name;
 
     @Column()

@@ -16,7 +16,7 @@ public class Cliente {
     @Column()
     private String name;
 
-    @Column()
+    @Column(unique = true) //No puede haber emails repetidos
     private String email;
 
 }
