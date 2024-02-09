@@ -37,6 +37,7 @@ public class FacturaService {
 
     public String post( Factura factura) {
         factura.setTotal(0); //siempre factura se crea con un valor total = 0
+        factura.setCantidadProductos(0); //siempre cantidad de productos se inicializa en 0.
         repoFactura.save(factura);
         return "Factura guardada";
     }
@@ -99,6 +100,7 @@ public class FacturaService {
                 comprobante.put("ID factura: ", factura.getId());
                 comprobante.put("Nombre cliente: ", cliente.getName()); // Agregamos el nombre del cliente
                 comprobante.put("Productos: ", productosComprobante);
+                comprobante.put("Cantidad de productos: ",factura.getCantidadProductos());
                 comprobante.put("Total:",factura.getTotal());
                 //Retorno el comprobante.
                 return ResponseEntity.ok(comprobante);

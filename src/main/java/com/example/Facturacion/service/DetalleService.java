@@ -34,19 +34,20 @@ public class DetalleService {
     }
 
     public String post(Detalle detalle) {
-        Optional<Factura> optionalActualizarMontoFactura = repoFactura.findById(detalle.getFactura().getId());
+        Optional<Factura> optionalActualizarFactura = repoFactura.findById(detalle.getFactura().getId());
         Optional<Producto> optionalActualizarStockProducto = repoProducto.findById(detalle.getProducto().getId());
-        if (optionalActualizarMontoFactura.isPresent() && optionalActualizarStockProducto.isPresent()) {
+        if (optionalActualizarFactura.isPresent() && optionalActualizarStockProducto.isPresent()) {
             Producto productoElegido = optionalActualizarStockProducto.get();
             if(productoElegido.getStock() > detalle.getAmount()){
-                Factura actualizarMontoFactura = optionalActualizarMontoFactura.get();
-                // Actualizo valor factura
-                actualizarMontoFactura.setTotal(actualizarMontoFactura.getTotal() + detalle.getAmount() * productoElegido.getPrice());
+                Factura actualizarFactura = optionalActualizarFactura.get();
+                // Actualizo valor factura y sumo la cantidad de productos agregados
+                actualizarFactura.setTotal(actualizarFactura.getTotal() + detalle.getAmount() * productoElegido.getPrice());
+                actualizarFactura.setCantidadProductos(actualizarFactura.getCantidadProductos() + detalle.getAmount());
                 repoDetalle.save(detalle);
                 //Actualizo stock producto
                 productoElegido.setStock(productoElegido.getStock()- detalle.getAmount());
                 // Guardar los cambios en las entidades actualizadas
-                repoFactura.save(actualizarMontoFactura);
+                repoFactura.save(actualizarFactura);
                 repoProducto.save(productoElegido);
                 return "Detalle guardado";
             }
