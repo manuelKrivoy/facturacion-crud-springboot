@@ -6,6 +6,164 @@ Este proyecto implementa un CRUD utilizando Java Spring con JPA y MySQL para ges
 
 ![DER TP Java](https://github.com/manuelKrivoy/facturacion-crud-springboot/assets/63810676/35442648-3e4f-4a67-b3e5-16454fab10be)
 
+## Documentación API:
+
+### Gestión de Clientes
+Esta API proporciona endpoints para la gestión de clientes en un sistema de facturación.
+
+### Endpoints Disponibles
+
+#### Obtener todos los clientes
+
+- **Método:** `GET`
+- **URL:** `/clientes`
+- **Descripción:** Obtiene una lista de todos los clientes registrados en el sistema.
+
+#### Agregar un nuevo cliente
+
+- **Método:** `POST`
+- **URL:** `/alta/cliente`
+- **Descripción:** Registra un nuevo cliente en el sistema.
+- **Parámetros de solicitud:**
+    - `cliente`: Objeto JSON que representa los detalles del cliente a agregar.
+
+#### Modificar un cliente existente
+
+- **Método:** `PUT`
+- **URL:** `/modificar/cliente/{id}`
+- **Descripción:** Actualiza los detalles de un cliente existente identificado por su ID.
+- **Parámetros de solicitud:**
+    - `id`: Identificador único del cliente a modificar.
+    - `cliente`: Objeto JSON que contiene los nuevos detalles del cliente.
+
+#### Eliminar un cliente existente
+
+- **Método:** `DELETE`
+- **URL:** `/baja/cliente/{id}`
+- **Descripción:** Elimina un cliente existente del sistema.
+- **Parámetros de solicitud:**
+    - `id`: Identificador único del cliente a eliminar.
+
+## Gestión de Productos
+
+Esta API proporciona endpoints para la gestión de productos en un sistema de facturación.
+
+### Endpoints Disponibles
+
+#### Obtener todos los productos
+
+- **Método:** `GET`
+- **URL:** `/productos`
+- **Descripción:** Obtiene una lista de todos los productos registrados en el sistema.
+
+#### Agregar un nuevo producto
+
+- **Método:** `POST`
+- **URL:** `/alta/producto`
+- **Descripción:** Registra un nuevo producto en el sistema.
+- **Parámetros de solicitud:**
+    - `producto`: Objeto JSON que representa los detalles del producto a agregar.
+
+#### Modificar un producto existente
+
+- **Método:** `PUT`
+- **URL:** `/modificar/producto/{id}`
+- **Descripción:** Actualiza los detalles de un producto existente identificado por su ID.
+- **Parámetros de solicitud:**
+    - `id`: Identificador único del producto a modificar.
+    - `producto`: Objeto JSON que contiene los nuevos detalles del producto.
+
+#### Eliminar un producto existente
+
+- **Método:** `DELETE`
+- **URL:** `/baja/producto/{id}`
+- **Descripción:** Elimina un producto existente del sistema.
+- **Parámetros de solicitud:**
+    - `id`: Identificador único del producto a eliminar.
+
+## Gestión de Facturas
+
+Esta API proporciona endpoints para la gestión de facturas en un sistema de facturación.
+
+### Endpoints Disponibles
+
+#### Obtener todas las facturas
+
+- **Método:** `GET`
+- **URL:** `/facturas`
+- **Descripción:** Obtiene una lista de todas las facturas registradas en el sistema.
+
+#### Agregar una nueva factura
+
+- **Método:** `POST`
+- **URL:** `/alta/factura`
+- **Descripción:** Registra una nueva factura en el sistema.
+- **Parámetros de solicitud:**
+    - `factura`: Objeto JSON que representa los detalles de la factura a agregar.
+
+#### Modificar una factura existente
+
+- **Método:** `PUT`
+- **URL:** `/modificar/factura/{id}`
+- **Descripción:** Actualiza los detalles de una factura existente identificada por su ID.
+- **Parámetros de solicitud:**
+    - `id`: Identificador único de la factura a modificar.
+    - `factura`: Objeto JSON que contiene los nuevos detalles de la factura.
+
+#### Eliminar una factura existente
+
+- **Método:** `DELETE`
+- **URL:** `/baja/factura/{id}`
+- **Descripción:** Elimina una factura existente del sistema.
+- **Parámetros de solicitud:**
+    - `id`: Identificador único de la factura a eliminar.
+
+#### Generar comprobante de una factura
+
+- **Método:** `GET`
+- **URL:** `/comprobante/{id}`
+- **Descripción:** Genera un comprobante para una factura específica identificada por su ID.
+- **Parámetros de solicitud:**
+    - `id`: Identificador único de la factura para la cual se genera el comprobante.
+
+## Gestión de Detalles
+
+Esta API proporciona endpoints para la gestión de detalles en un sistema de facturación.
+
+### Endpoints Disponibles
+
+#### Obtener todos los detalles
+
+- **Método:** `GET`
+- **URL:** `/detalles`
+- **Descripción:** Obtiene una lista de todos los detalles registrados en el sistema.
+
+#### Agregar un nuevo detalle
+
+- **Método:** `POST`
+- **URL:** `/alta/detalle`
+- **Descripción:** Registra un nuevo detalle en el sistema.
+- **Parámetros de solicitud:**
+    - `detalle`: Objeto JSON que representa los detalles del detalle a agregar.
+
+#### Modificar un detalle existente
+
+- **Método:** `PUT`
+- **URL:** `/modificar/detalle/{id}`
+- **Descripción:** Actualiza los detalles de un detalle existente identificado por su ID.
+- **Parámetros de solicitud:**
+    - `id`: Identificador único del detalle a modificar.
+    - `detalle`: Objeto JSON que contiene los nuevos detalles del detalle.
+
+#### Eliminar un detalle existente
+
+- **Método:** `DELETE`
+- **URL:** `/baja/detalle/{id}`
+- **Descripción:** Elimina un detalle existente del sistema.
+- **Parámetros de solicitud:**
+    - `id`: Identificador único del detalle a eliminar.
+
+
 ## Script de la Base de Datos
 
 ### Script de inserción de Productos
@@ -52,6 +210,9 @@ INSERT INTO factura (created_at, total, cantidad_productos, cliente_id) VALUES
     }
 }
 ```
+
+
+
 
 
 
