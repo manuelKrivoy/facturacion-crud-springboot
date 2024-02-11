@@ -24,8 +24,7 @@ Esta API proporciona endpoints para la gestión de clientes en un sistema de fac
 - **Método:** `POST`
 - **URL:** `/alta/cliente`
 - **Descripción:** Registra un nuevo cliente en el sistema.
-- **Parámetros de solicitud:**
-    - `cliente`: Objeto JSON que representa los detalles del cliente a agregar.
+
 
 #### Modificar un cliente existente
 
@@ -34,7 +33,7 @@ Esta API proporciona endpoints para la gestión de clientes en un sistema de fac
 - **Descripción:** Actualiza los detalles de un cliente existente identificado por su ID.
 - **Parámetros de solicitud:**
     - `id`: Identificador único del cliente a modificar.
-    - `cliente`: Objeto JSON que contiene los nuevos detalles del cliente.
+   
 
 #### Eliminar un cliente existente
 
@@ -61,8 +60,7 @@ Esta API proporciona endpoints para la gestión de productos en un sistema de fa
 - **Método:** `POST`
 - **URL:** `/alta/producto`
 - **Descripción:** Registra un nuevo producto en el sistema.
-- **Parámetros de solicitud:**
-    - `producto`: Objeto JSON que representa los detalles del producto a agregar.
+
 
 #### Modificar un producto existente
 
@@ -71,7 +69,6 @@ Esta API proporciona endpoints para la gestión de productos en un sistema de fa
 - **Descripción:** Actualiza los detalles de un producto existente identificado por su ID.
 - **Parámetros de solicitud:**
     - `id`: Identificador único del producto a modificar.
-    - `producto`: Objeto JSON que contiene los nuevos detalles del producto.
 
 #### Eliminar un producto existente
 
@@ -98,8 +95,6 @@ Esta API proporciona endpoints para la gestión de facturas en un sistema de fac
 - **Método:** `POST`
 - **URL:** `/alta/factura`
 - **Descripción:** Registra una nueva factura en el sistema.
-- **Parámetros de solicitud:**
-    - `factura`: Objeto JSON que representa los detalles de la factura a agregar.
 
 #### Modificar una factura existente
 
@@ -108,7 +103,6 @@ Esta API proporciona endpoints para la gestión de facturas en un sistema de fac
 - **Descripción:** Actualiza los detalles de una factura existente identificada por su ID.
 - **Parámetros de solicitud:**
     - `id`: Identificador único de la factura a modificar.
-    - `factura`: Objeto JSON que contiene los nuevos detalles de la factura.
 
 #### Eliminar una factura existente
 
@@ -143,8 +137,6 @@ Esta API proporciona endpoints para la gestión de detalles en un sistema de fac
 - **Método:** `POST`
 - **URL:** `/alta/detalle`
 - **Descripción:** Registra un nuevo detalle en el sistema.
-- **Parámetros de solicitud:**
-    - `detalle`: Objeto JSON que representa los detalles del detalle a agregar.
 
 #### Modificar un detalle existente
 
@@ -153,7 +145,6 @@ Esta API proporciona endpoints para la gestión de detalles en un sistema de fac
 - **Descripción:** Actualiza los detalles de un detalle existente identificado por su ID.
 - **Parámetros de solicitud:**
     - `id`: Identificador único del detalle a modificar.
-    - `detalle`: Objeto JSON que contiene los nuevos detalles del detalle.
 
 #### Eliminar un detalle existente
 
